@@ -17,12 +17,18 @@ public class CommonSteps extends CommonTestcase {
 		commonPage = PageFactory.initElements(driver, CommonPage.class);
 	}
 
-	@Then("^Verify successfully with message \"(.*?)\"$")
-	public void verify_successfully_with_message(String message1, String message2) throws Throwable {
-		verifyTrue(commonPage.isDisplayed_Dynamic_2_Message(message1, message2));
+	@Then("^Verify successfully with message \"(.*?)\" and \"(.*?)\"$")
+	public void verify_successfully_with_message(String message1, String message2) {
+		if (!(message1.isEmpty()) && message2.isEmpty()) {
+			verifyTrue(commonPage.isDisplayed_Dynamic_Message(message1));
+		} else if (message1.isEmpty() && !(message2.isEmpty())) {
+			verifyTrue(commonPage.isDisplayed_Dynamic_Message(message2));
+		} else if (!(message1.isEmpty()) && !(message2.isEmpty())) {
+			verifyTrue(commonPage.isDisplayed_Dynamic_Message(message1));
+			verifyTrue(commonPage.isDisplayed_Dynamic_Message(message2));
+		}
+
 	}
-	
-	
 
 //	@Then("^Quit brower$")
 //	public void quit_brower() {

@@ -86,4 +86,9 @@ public class LogInPage extends commonFunction {
 		waitVisible(LogInPageUI.USERNAME_LBL);
 		return getText(LogInPageUI.USERNAME_LBL);
 	} 
+	
+	public void openBeecow(String url)
+	{
+		openUrl(url);
+	}
 }
